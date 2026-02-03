@@ -6,3 +6,7 @@ body,
   font-family: verdana,arial,sans-serif;
   box-sizing: border-box;
 }
+
+.border {
+  border-color: rgb(185, 185, 185);
+}
