@@ -1,0 +1,10 @@
+# GET http://localhost:5000/api/health
+
+POST http://localhost:5000/api/auth/signin
+Content-Type: application/json
+
+{
+    "email" : "ashishchh296@gmail.com",
+    "username" : "ashish1",
+    "password" : "Ashish@27"
+}

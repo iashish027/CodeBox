@@ -1,0 +1,14 @@
+{
+    "name": "codebox",
+    "private": true,
+    "type": "module",
+    "workspaces": [
+    "apps/*",
+    "packages/*"
+    ],
+    "scripts": {
+        "db:generate": "npm run generate -w @codebox/db",
+        "db:push": "npm run push -w @codebox/db",
+        "dev:server": "npm run dev -w @codebox/server"
+    }
+}
