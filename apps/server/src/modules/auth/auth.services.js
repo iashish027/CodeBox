@@ -1,7 +1,7 @@
 import bcrypt from "bcrypt";
 import { ApiError } from "../../shared/errors/apiError.js";
 import { ERROR_CODES } from "../../shared/errors/errorCodes.js";
-import { prisma } from "@codebox/db/src/prisma.js";
+import { prisma } from "@codebox/db";
 import { generateAccessToken } from "../../shared/utils/jwt.js";
 import {
   generateRefreshToken,
