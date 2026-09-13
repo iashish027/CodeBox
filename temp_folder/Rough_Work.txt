@@ -77,3 +77,4 @@ step 1 - creat a backend with sign up , sign in , jwt auth
                     . check origin in request
                     . 
 
+        done - signin , signup , refresh token , verify-mail , resend-mail.

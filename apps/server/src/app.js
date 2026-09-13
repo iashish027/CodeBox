@@ -2,6 +2,7 @@ import express from "express";
 import cookieParser from "cookie-parser";
 import { errorMiddleware } from "./shared/middlewares/errorMiddleware.js";
 import authRoutes from "./modules/auth/auth.routes.js";
+import problemRoutes from "./modules/problems/problems.routes.js";
 
 const app = express();
 
@@ -14,6 +15,7 @@ app.get("/api/health", (req, res) => {
 });
 
 app.use("/api/auth", authRoutes);
+app.use("/api/problems",problemRoutes);
 
 app.use(errorMiddleware);
 

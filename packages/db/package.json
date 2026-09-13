@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "main": "./src/prisma.js",
   "license": "MIT",
+  "type": "module",
   "scripts": {
     "db:generate": "prisma generate",
     "db:push": "prisma db push",

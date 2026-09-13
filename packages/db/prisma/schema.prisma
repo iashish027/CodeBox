@@ -44,30 +44,30 @@ enum Role {
 //////////////////////
 
 model User {
-  id                Int       @id @default(autoincrement())
-  username          String    @unique @db.VarChar(50)
-  email             String    @unique @db.VarChar(100)
-  role              Role      @default(User)
-  passwordHash      String    @map("password_hash")
-  isVerified        Boolean   @default(false)
-  verificationToken String?   @db.VarChar(255)
-  tokenExpiry       DateTime  @default(now())
-  createdAt         DateTime  @default(now()) @map("created_at")
+  id                Int      @id @default(autoincrement())
+  username          String   @unique @db.VarChar(50)
+  email             String   @unique @db.VarChar(100)
+  role              Role     @default(User)
+  passwordHash      String   @map("password_hash")
+  isVerified        Boolean  @default(false)
+  verificationToken String?  @db.VarChar(255)
+  tokenExpiry       DateTime @default(now())
+  createdAt         DateTime @default(now()) @map("created_at")
 
-  sessions          Session[]
-  submissions       Submission[]
+  sessions    Session[]
+  submissions Submission[]
 
   @@map("users")
 }
 
 model Session {
-  id           Int      @id @default(autoincrement())
-  userId       Int
-  refreshHash  String   @db.VarChar(255)
-  userAgent    String?  @db.VarChar(255)
-  ipAddress    String?  @db.VarChar(45)
-  expiresAt    DateTime
-  createdAt    DateTime @default(now())
+  id          Int      @id @default(autoincrement())
+  userId      Int
+  refreshHash String   @db.VarChar(255)
+  userAgent   String?  @db.VarChar(255)
+  ipAddress   String?  @db.VarChar(45)
+  expiresAt   DateTime
+  createdAt   DateTime @default(now())
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
@@ -77,13 +77,19 @@ model Session {
 }
 
 model Problem {
-  id          Int         @id @default(autoincrement())
-  title       String      @db.VarChar(255)
-  description String
-  difficulty  Difficulty?
-  timeLimit   Int         @map("time_limit") // ms
-  memoryLimit Int         @map("memory_limit") // MB
-  createdAt   DateTime    @default(now()) @map("created_at")
+  id           Int         @id @default(autoincrement())
+  title        String      @db.VarChar(255)
+  slug         String      @unique @db.VarChar(300) // renamed + unique
+  description  String
+  sampleInput  String
+  sampleOutput String
+  inputFormat  String
+  outputFormat String
+  constraints  String
+  difficulty   Difficulty?
+  timeLimit    Int         @map("time_limit")
+  memoryLimit  Int         @map("memory_limit")
+  createdAt    DateTime    @default(now()) @map("created_at")
 
   testcases   TestCase[]
   submissions Submission[]

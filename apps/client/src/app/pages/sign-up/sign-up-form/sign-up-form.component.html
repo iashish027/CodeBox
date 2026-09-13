@@ -1,0 +1,18 @@
+<form (ngSubmit)="handleSubmit()">
+  @for (field of formFields; track field.id) {
+    <div class="field">
+      <label [for]="field.id">{{ field.label }}</label>
+
+      <input
+        [id]="field.id"
+        [name]="field.id"
+        [type]="field.type"
+        [value]="formData[field.id]"
+        (input)="handleChange(field.id, $event)"
+        required
+      >
+    </div>
+  }
+
+  <button type="submit">Register</button>
+</form>
